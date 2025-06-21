@@ -1,0 +1,25 @@
+# Font
+font-family = "JetBrainsMono Nerd Font"
+font-size = 21
+
+# Appearance
+theme = "catppuccin-mocha"
+background = "#141421"
+# background-opacity = 0.999
+
+# Binding
+keybind = unconsumed:alt+1=unbind
+keybind = unconsumed:alt+2=unbind
+keybind = unconsumed:alt+3=unbind
+keybind = unconsumed:alt+4=unbind
+keybind = unconsumed:alt+5=unbind
+keybind = unconsumed:alt+6=unbind
+keybind = unconsumed:alt+7=unbind
+keybind = unconsumed:alt+8=unbind
+keybind = unconsumed:alt+9=unbind
+
+# Other Settings
+shell-integration = detect
+confirm-close-surface = false
+window-padding-x = 12,12
+window-padding-y = 12,12

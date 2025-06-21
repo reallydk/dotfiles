@@ -1,0 +1,169 @@
+@import "mocha.css";
+
+* {
+    border: none;
+    margin: 0;
+    padding: 0;
+    font-family: "JetBrainsMono Nerd Font", monospace;
+    font-size: 14px;
+    min-height: 0px;
+    color: @text;
+    background: transparent;
+}
+
+window#waybar {
+    background: rgba(22, 12, 25, 0.95); /* @mantle */
+    padding: 0px 10px;
+    box-shadow: 0 0 8px rgba(0, 0, 0, 0.5);
+}
+
+/* === Workspaces === */
+#workspaces {
+    padding: 0 2px;
+    margin: 4px 2px;
+}
+
+#workspaces button {
+    color: @peach;
+    background: transparent;
+    padding: 4px 8px;
+    margin: 1px 2px;
+    border-radius: 3px;
+    border-top: 2px solid transparent;
+    transition: all 0.3s ease;
+}
+
+#workspaces button.active {
+    color: @mauve;
+    font-weight: bold;
+    background: rgba(137, 180, 250, 0.1); /* @blue */
+    text-shadow: 0 0 6px @blue;
+    border-top: 2px solid rgba(203, 166, 247, 0.4); /* @mauve */
+}
+
+#workspaces button:hover {
+    color: @peach;
+    background: rgba(250, 179, 135, 0.1); /* @peach */
+}
+
+#workspaces button.urgent {
+    background-color: @red;
+    border-top: 2px solid @red;
+    animation: urgent-blink 1s infinite;
+}
+
+/* === Module Defaults === */
+#clock,
+#network,
+#battery,
+#pulseaudio,
+#custom-bluetooth,
+#backlight,
+#tray,
+#custom-vpn,
+#window,
+#submap {
+    padding: 0px 8px 0px 8px;
+    margin: 6px 4px;
+    border-radius: 6px;
+    transition:
+        background 0.3s ease,
+        color 0.3s ease;
+}
+
+/* === Module-specific coloring === */
+#clock {
+    color: @sky;
+}
+#network {
+    color: @sky;
+}
+#pulseaudio {
+    color: @mauve;
+}
+#pulseaudio.muted {
+    color: @overlay0;
+    font-style: italic;
+}
+#custom-bluetooth,
+#backlight {
+    color: @peach;
+}
+#battery {
+    color: @green;
+}
+#battery.charging {
+    color: @teal;
+}
+#battery.plugged {
+    color: @sky;
+}
+#battery.full {
+    color: @lavender;
+}
+#battery.warning {
+    color: @yellow;
+}
+#battery.critical {
+    color: @red;
+    animation: critical-blink 1s infinite;
+}
+#custom-cpu {
+    color: @mauve;
+}
+#custom-memory {
+    color: @blue;
+}
+#custom-temp {
+    color: @red;
+}
+
+/* === Hover Interactions === */
+#clock:hover,
+#network:hover,
+#battery:hover,
+#pulseaudio:hover,
+#custom-bluetooth:hover,
+#custom-vpn:hover,
+#backlight:hover {
+    font-weight: 800;
+    background: rgba(203, 166, 247, 0.08); /* @mauve */
+    color: @rosewater;
+    text-shadow: 0 0 4px @rosewater;
+}
+
+/* === Tooltip Styling === */
+tooltip {
+    background: @surface0;
+    color: @text;
+    border: 1px solid @overlay0;
+    border-radius: 8px;
+    padding: 8px 12px;
+}
+
+/* === Animations === */
+@keyframes critical-blink {
+    0% {
+        opacity: 1;
+    }
+    100% {
+        opacity: 0.4;
+    }
+}
+
+@keyframes urgent-blink {
+    0% {
+        text-shadow: 0 0 2px @red;
+    }
+    100% {
+        text-shadow: 0 0 8px @red;
+    }
+}
+
+#custom-vpn.active {
+    color: @green;
+}
+
+#custom-vpn.inactive {
+    color: @red;
+}
