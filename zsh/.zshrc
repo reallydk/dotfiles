@@ -83,9 +83,9 @@ alias cw="source ~/.config/hypr/scripts/swww/change.sh"
 alias lg='lazygit'
 alias so='source ~/.zshrc'
 alias sou='source ./venv/bin/activate'
-alias l='eza --color=always -1'
-alias ls='eza --color=always'
-alias ll='eza --color=always -l'
+alias l='eza --color=always -1 --icons=always'
+alias ls='eza --color=always --icons=always'
+alias ll='eza --color=always -l --icons=always'
 
 # fallbacks
 if command -v zoxide >/dev/null 2>&1; then

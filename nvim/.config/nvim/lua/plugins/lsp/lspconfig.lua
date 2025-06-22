@@ -20,40 +20,20 @@ return {
           mode = mode or "n"
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
-
         map("K", function()
-          local hover = function(_, result, ctx, config)
-            local util = vim.lsp.util
-            config = config or {}
-            config.border = "rounded"
-            config.max_width = 80
-            config.max_height = 20
-
-            if not (result and result.contents) then
-              return
-            end
-
-            local contents = util.convert_input_to_markdown_lines(result.contents)
-            for i = 1, #contents do
-              contents[i] = " " .. contents[i] .. " "
-            end
-
-            util.open_floating_preview(contents, "markdown", config)
-          end
-
-          vim.lsp.buf_request(0, "textDocument/hover", vim.lsp.util.make_position_params(), hover)
+          vim.lsp.buf.hover({
+            border = "rounded",
+          })
         end, "doc")
-
-        map("<leader>rn", vim.lsp.buf.rename, "rename")
+        map("grn", vim.lsp.buf.rename, "rename")
         map("<leader>ca", vim.lsp.buf.code_action, "code actions", { "n", "x" })
-        map("<leader>gr", require("telescope.builtin").lsp_references, "references")
-        map("<leader>gi", require("telescope.builtin").lsp_implementations, "implementation")
-        map("<leader>gD", require("telescope.builtin").lsp_definitions, "definition")
-        map("gd", vim.lsp.buf.declaration, "declaration")
-        map("<leader>go", require("telescope.builtin").lsp_document_symbols, "document symbols")
-        map("<leader>gw", require("telescope.builtin").lsp_dynamic_workspace_symbols, "workspace symbols")
-        map("<leader>gt", require("telescope.builtin").lsp_type_definitions, "type definition")
-
+        map("grr", require("telescope.builtin").lsp_references, "references")
+        map("gri", require("telescope.builtin").lsp_implementations, "implementations")
+        map("grd", require("telescope.builtin").lsp_definitions, "def")
+        map("grD", vim.lsp.buf.declaration, "declaration")
+        map("gO", require("telescope.builtin").lsp_document_symbols, "document symbols")
+        map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "workspace symbols")
+        map("grt", require("telescope.builtin").lsp_type_definitions, "type definition")
         local function client_supports_method(client, method, bufnr)
           if vim.fn.has("nvim-0.11") == 1 then
             return client:supports_method(method, bufnr)
@@ -61,7 +41,6 @@ return {
             return client.supports_method(method, { bufnr = bufnr })
           end
         end
-
         local client = vim.lsp.get_client_by_id(event.data.client_id)
         if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
           local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
@@ -70,13 +49,11 @@ return {
             group = highlight_augroup,
             callback = vim.lsp.buf.document_highlight,
           })
-
           vim.api.nvim_create_autocmd({ "CursorMoved", "CursorMovedI" }, {
             buffer = event.buf,
             group = highlight_augroup,
             callback = vim.lsp.buf.clear_references,
           })
-
           vim.api.nvim_create_autocmd("LspDetach", {
             group = vim.api.nvim_create_augroup("kickstart-lsp-detach", { clear = true }),
             callback = function(event2)
@@ -92,7 +69,6 @@ return {
         end
       end,
     })
-
     vim.diagnostic.config({
       severity_sort = true,
       float = { border = "rounded", source = "if_many" },
@@ -119,7 +95,6 @@ return {
         end,
       },
     })
-
     local capabilities = require("blink.cmp").get_lsp_capabilities()
     local servers = {
       pylsp = {},
@@ -133,7 +108,6 @@ return {
         },
       },
     }
-
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       "stylua",
@@ -141,7 +115,6 @@ return {
       "mypy",
     })
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
-
     ---@diagnostic disable-next-line: missing-fields
     require("mason-lspconfig").setup({
       ensure_installed = {},

@@ -1,0 +1,16 @@
+/* ROUNDED CATPPUCCIN THEME FOR ROFI */
+/* catppuccin edit */
+
+* {
+    bg0:    #1e1e2e;  /* base */
+    bg1:    #313244;  /* surface0 */
+    bg2:    #45475a80; /* surface1 with alpha */
+    bg3:    #cba6f7F2;  /* mauve with alpha */
+    fg0:    #cdd6f4;  /* text */
+    fg1:    #ffffff;  /* bright white */
+    fg2:    #a6adc8;  /* subtext0 */
+    fg3:    #313244;  /* surface0 */
+}
+
+@import "template/rounded-template.rasi"
+

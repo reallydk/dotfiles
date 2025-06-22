@@ -4,7 +4,7 @@ vim.o.relativenumber = true
 
 -- UI behavior
 vim.o.mouse = "a"
-vim.o.scrolloff = 10
+vim.o.scrolloff = 6
 vim.o.signcolumn = "no"
 vim.o.cursorline = true
 vim.o.termguicolors = true

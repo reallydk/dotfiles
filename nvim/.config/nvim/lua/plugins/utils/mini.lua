@@ -4,7 +4,6 @@ return {
     require("mini.ai").setup({ n_lines = 500 })
     require("mini.surround").setup()
     require("mini.comment").setup()
-
     require("mini.move").setup({
       mappings = {
         left = "<C-h>",
@@ -20,9 +19,7 @@ return {
         reindent_linewise = true,
       },
     })
-
     require("mini.indentscope").setup({
-      symbol = "▏",
       vim.api.nvim_create_autocmd("FileType", {
         pattern = { "help", "alpha", "dashboard", "oil", "lazy", "Mason" },
         callback = function()
@@ -40,7 +37,7 @@ return {
       },
       window = {
         config = {},
-        max_width_share = 0.382,
+        -- max_width_share = 0.382,
         winblend = 25,
       },
     })

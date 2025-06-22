@@ -2,7 +2,6 @@ return {
   "stevearc/conform.nvim",
   event = { "BufWritePre" },
   cmd = { "ConformInfo" },
-
   keys = {
     {
       "<leader>gf",
@@ -13,7 +12,6 @@ return {
       desc = "format",
     },
   },
-
   opts = {
     notify_on_error = false,
     format_on_save = function(bufnr)
@@ -27,7 +25,6 @@ return {
         }
       end
     end,
-
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "ruff_organize_imports", "ruff_fix", "ruff_format" },
@@ -39,14 +36,12 @@ return {
         args = { "format", "-" },
         stdin = true,
       },
-
       -- Ruff Fix (like ruff check --fix)
       ruff_fix = {
         command = "ruff",
         args = { "check", "--fix", "--exit-zero", "-" },
         stdin = true,
       },
-
       -- Ruff Import Organizer (like ruff check --fix --select I)
       ruff_organize_imports = {
         command = "ruff",

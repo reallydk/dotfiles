@@ -1,0 +1,115 @@
+* {
+    font: "JetBrainsMono Nerd Font 12";
+
+    /* Catppuccin Colors (Mocha) */
+    bg0: #1e1e2e;        /* base */
+    bg1: #313244;        /* surface0 */
+    bg2: #45475a80;      /* surface1 (with alpha) */
+    bg3: #cba6f7F2;      /* mauve (accent, with alpha) */
+
+    fg0: #cdd6f4;        /* text */
+    fg1: #ffffff;        /* bright text */
+    fg2: #a6adc8;        /* subtext0 */
+    fg3: #313244;        /* surface0 (placeholder) */
+
+    background-color: transparent;
+    text-color: @fg0;
+
+    margin: 0;
+    padding: 0;
+    spacing: 0;
+}
+
+window {
+    location: center;
+    width: 680;
+    border-radius: 16px;
+    background-color: @bg0;
+}
+
+mainbox {
+    padding: 6px;
+}
+
+inputbar {
+    font: "JetBrainsMono Nerd Font 16";
+    background-color: @bg1;
+    border-color: @bg3;
+    border: 2px;
+    border-radius: 16px;
+    padding: 8px 16px;
+    spacing: 8px;
+    children: [ icon-search, entry ];
+    margin: 12px 12px 12px;
+}
+
+icon-search {
+    expand: false;
+    filename: "search";
+    size: 28px;
+    vertical-align: 0.5;
+}
+
+entry {
+    font: inherit;
+    placeholder: "Search";
+    placeholder-color: @fg3;
+    vertical-align: 0.5;
+}
+
+prompt {
+    text-color: @fg2;
+}
+
+message {
+    border: 2px 0 0;
+    border-color: @bg2;
+    background-color: @bg2;
+    border-radius: 16px;
+    margin: 12px 12px 10px;
+}
+
+textbox {
+    // padding: 18px 48px;
+}
+
+listview {
+    // background-color: transparent;
+    // lines: 10;
+    // columns: 1;
+    // fixed-height: false;
+    // border: 1px 0 0;
+    // border-color: @bg1;
+}
+
+element {
+    padding: 8px 16px;
+    spacing: 8px;
+    background-color: transparent;
+    border-radius: 16px;
+}
+
+element normal active {
+    text-color: @bg3;
+}
+
+element alternate active {
+    text-color: @bg3;
+}
+
+element selected normal,
+element selected active {
+    background-color: @bg3;
+    text-color: @fg1;
+}
+
+element-icon {
+    size: 1em;
+    vertical-align: 0.5;
+}
+
+element-text {
+    text-color: inherit;
+    vertical-align: 0.5;
+}
+

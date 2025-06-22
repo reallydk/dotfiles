@@ -17,8 +17,8 @@ return {
         alpha = true,
         telescope = {
           enabled = true,
-          -- style = "classic",
         },
+        which_key = true,
       },
     })
     vim.cmd.colorscheme("catppuccin-mocha")
