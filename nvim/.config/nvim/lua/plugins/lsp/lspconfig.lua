@@ -1,5 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
+
   dependencies = {
     { "mason-org/mason.nvim", opts = {} },
     "mason-org/mason-lspconfig.nvim",
@@ -7,11 +8,16 @@ return {
     {
       "j-hui/fidget.nvim",
       opts = {
-        notification = { window = { winblend = 0 } },
+        notification = {
+          window = {
+            winblend = 0,
+          },
+        },
       },
     },
     "saghen/blink.cmp",
   },
+
   config = function()
     vim.api.nvim_create_autocmd("LspAttach", {
       group = vim.api.nvim_create_augroup("kickstart-lsp-attach", { clear = true }),

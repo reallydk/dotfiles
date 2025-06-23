@@ -4,8 +4,8 @@ font-size = 21
 
 # Appearance
 theme = "catppuccin-mocha"
-background = "#141421"
-# background-opacity = 0.999
+background = "#131420"
+# background-opacity = 0.97
 
 # Binding
 keybind = unconsumed:alt+1=unbind
