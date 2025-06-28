@@ -86,6 +86,8 @@ alias sou='source ./venv/bin/activate'
 alias l='eza --color=always -1 --icons=always'
 alias ls='eza --color=always --icons=always'
 alias ll='eza --color=always -l --icons=always'
+alias copy=wl-copy 
+alias paste=wl-paste
 
 # fallbacks
 if command -v zoxide >/dev/null 2>&1; then

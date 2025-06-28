@@ -4,7 +4,7 @@ vim.o.relativenumber = true
 
 -- UI behavior
 vim.o.mouse = "a"
-vim.o.scrolloff = 6
+vim.o.scrolloff = 10
 vim.o.signcolumn = "no"
 vim.o.cursorline = true
 vim.o.termguicolors = true
@@ -31,4 +31,4 @@ vim.o.confirm = true
 vim.o.undofile = true
 vim.o.swapfile = false
 vim.opt.backspace = { "indent", "eol", "start" }
--- vim.o.list = true
+vim.o.cmdheight = 0

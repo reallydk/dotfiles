@@ -1,18 +1,17 @@
 return {
   "nvim-lualine/lualine.nvim",
   dependencies = { "nvim-tree/nvim-web-devicons" },
-
   config = function()
-    local lualine = require("lualine")
-    lualine.setup({
+    require("lualine").setup({
       options = {
-        theme = "catppuccin",
-        globalstatus = true,
         icons_enabled = true,
+        -- theme = "catppuccin",
+        theme = "auto",
+        component_separators = "",
+        section_separators = "",
+        globalstatus = true,
       },
-      extensions = {
-        "oil",
-      },
+      extensions = { "oil" },
     })
   end,
 }

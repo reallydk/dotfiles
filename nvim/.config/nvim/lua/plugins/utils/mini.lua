@@ -2,7 +2,7 @@ return {
   "echasnovski/mini.nvim",
   config = function()
     require("mini.ai").setup({ n_lines = 500 })
-    require("mini.surround").setup()
+    require("mini.pairs").setup()
     require("mini.comment").setup()
     require("mini.move").setup({
       mappings = {
@@ -38,7 +38,7 @@ return {
       window = {
         config = {},
         -- max_width_share = 0.382,
-        winblend = 25,
+        wknblend = 25,
       },
     })
     vim.notify = require("mini.notify").make_notify()

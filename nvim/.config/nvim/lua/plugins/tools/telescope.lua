@@ -62,7 +62,7 @@ return {
     vim.keymap.set("n", "<leader>f/", function()
       builtin.live_grep({
         grep_open_files = true,
-        prompt_title = "Live Grep in Open Files",
+        prompt_title = "live grep in Open files",
       })
     end, { desc = "live grep open" })
 

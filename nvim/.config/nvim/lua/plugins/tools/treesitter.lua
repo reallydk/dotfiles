@@ -18,7 +18,7 @@ return {
       "vimdoc",
     },
 
-    auto_install = true,
+    auto_install = wtrue,
 
     highlight = {
       enable = true,
