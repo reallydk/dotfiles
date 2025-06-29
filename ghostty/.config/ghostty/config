@@ -1,6 +1,6 @@
 # Font
 font-family = "JetBrainsMono Nerd Font"
-font-size = 21
+font-size = 18
 
 # Appearance
 theme = "catppuccin-mocha"
