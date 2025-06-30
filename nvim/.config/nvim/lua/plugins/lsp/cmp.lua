@@ -5,16 +5,21 @@ return {
   dependencies = {
     "folke/lazydev.nvim",
   },
+
   config = function()
     vim.o.completeopt = "menu,menuone,noinsert,noselect,preview"
+
     require("blink.cmp").setup({
+
       keymap = {
         preset = "default",
       },
+
       appearance = {
         use_nvim_cmp_as_default = true,
         nerd_font_variant = "mono",
       },
+
       completion = {
         documentation = {
           auto_show = true,
@@ -25,13 +30,17 @@ return {
             winhighlight = "NormalFloat:NormalFloat,FloatBorder:FloatBorder",
           },
         },
+
         menu = {
           border = "rounded",
         },
       },
       sources = {
+
         default = { "lsp", "path", "snippets", "lazydev", "buffer" },
+
         providers = {
+
           -- NOTE: path
           path = {
             name = "path",
@@ -47,6 +56,7 @@ return {
               show_hidden_files_by_default = true,
             },
           },
+
           -- NOTE: lsp
           lsp = {
             name = "lsp",
@@ -54,6 +64,7 @@ return {
             module = "blink.cmp.sources.lsp",
             score_offset = 90,
           },
+
           -- NOTE: Lazydev
           lazydev = {
             name = "lazydev",
@@ -61,6 +72,7 @@ return {
             enabled = true,
             score_offset = 90,
           },
+
           -- NOTE: Snippets
           snippets = {
             name = "snippets",
@@ -70,6 +82,7 @@ return {
             min_keyword_length = 2,
             score_offset = 85,
           },
+
           -- NOTE: Buffer
           buffer = {
             name = "buffer",
@@ -81,12 +94,10 @@ return {
           },
         },
       },
+
       snippets = { preset = "luasnip" },
+
       fuzzy = { implementation = "lua" },
-      signature = {
-        enabled = true,
-        window = { border = "rounded" },
-      },
     })
   end,
 }

@@ -13,7 +13,7 @@ config.window_close_confirmation = "NeverPrompt"
 config.window_decorations = "NONE"
 config.color_scheme = "Catppuccin Mocha"
 config.colors = {
-	background = "#141421",
+	background = "#0F0F19",
 }
 config.window_padding = {
 	left = 10,

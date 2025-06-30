@@ -1,7 +1,10 @@
 return {
   "stevearc/conform.nvim",
+
   event = { "BufWritePre" },
+
   cmd = { "ConformInfo" },
+
   keys = {
     {
       "<leader>gf",
@@ -12,8 +15,10 @@ return {
       desc = "format",
     },
   },
+
   opts = {
     notify_on_error = false,
+
     format_on_save = function(bufnr)
       local disable_filetypes = { c = true, cpp = true }
       if disable_filetypes[vim.bo[bufnr].filetype] then
@@ -25,10 +30,12 @@ return {
         }
       end
     end,
+
     formatters_by_ft = {
       lua = { "stylua" },
       python = { "ruff_organize_imports", "ruff_fix", "ruff_format" },
     },
+
     formatters = {
       -- Ruff Format (like black)
       ruff_format = {

@@ -75,6 +75,7 @@ return {
         end
       end,
     })
+
     vim.diagnostic.config({
       severity_sort = true,
       float = { border = "rounded", source = "if_many" },
@@ -87,6 +88,7 @@ return {
           [vim.diagnostic.severity.HINT] = "󰌶 ",
         },
       } or {},
+
       virtual_text = {
         source = "if_many",
         spacing = 2,
@@ -101,9 +103,12 @@ return {
         end,
       },
     })
+
     local capabilities = require("blink.cmp").get_lsp_capabilities()
+
     local servers = {
-      pyright = {},
+      basedpyright = {},
+      gopls = {},
       lua_ls = {
         settings = {
           Lua = {
@@ -114,13 +119,16 @@ return {
         },
       },
     }
+
     local ensure_installed = vim.tbl_keys(servers or {})
     vim.list_extend(ensure_installed, {
       "stylua",
       "ruff",
       "mypy",
     })
+
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
+
     ---@diagnostic disable-next-line: missing-fields
     require("mason-lspconfig").setup({
       ensure_installed = {},

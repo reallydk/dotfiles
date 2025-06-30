@@ -1,13 +1,11 @@
 # Font
-font-family = "JetBrainsMono Nerd Font"
+font-family = "JetBrains Mono Nerd Font"
 font-size = 18
 
 # Appearance
 theme = "catppuccin-mocha"
-# background = "#131420"
-# background = "#0D0D14"
-background = "#0B0B0B"
-background-opacity = 0.99
+background = "#00000D"
+# background-opacity = 0.98
 
 # Binding
 keybind = unconsumed:alt+1=unbind
