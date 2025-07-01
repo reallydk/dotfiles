@@ -2,26 +2,24 @@ return {
   "catppuccin/nvim",
   name = "catppuccin",
   priority = 1000,
+
   config = function()
     require("catppuccin").setup({
-      transparent_background = true,
+      transparent_background = false,
+      term_colors = true,
       default_integrations = true,
       integrations = {
-        blink_cmp = {
-          style = "bordered",
-        },
+        cmp = true,
+        gitsigns = true,
+        nvimtree = true,
+        treesitter = true,
+        notify = false,
         mini = {
           enabled = true,
           indentscope_color = "",
         },
-        alpha = true,
-        telescope = {
-          enabled = true,
-        },
-        which_key = true,
-        flash = true,
       },
     })
-    vim.cmd.colorscheme("catppuccin-mocha")
+    vim.cmd.colorscheme("catppuccin")
   end,
 }

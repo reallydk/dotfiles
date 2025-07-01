@@ -1,10 +1,11 @@
 return {
   "nvim-treesitter/nvim-treesitter",
+  event = { "BufReadPre", "BufNewFile" },
   build = ":TSUpdate",
   main = "nvim-treesitter.configs",
-  dependencies = {
-    "windwp/nvim-ts-autotag",
-  },
+  -- dependencies = {
+  --   "windwp/nvim-ts-autotag",
+  -- },
   opts = {
     ensure_installed = {
       "bash",
@@ -18,11 +19,11 @@ return {
       "vimdoc",
     },
 
-    auto_install = wtrue,
+    auto_install = true,
 
     highlight = {
       enable = true,
-      additional_vim_regex_highlighting = true,
+      additional_vim_regex_highlighting = false,
     },
 
     indent = { enable = true },
@@ -37,8 +38,8 @@ return {
       },
     },
 
-    autotag = {
-      enable = true,
-    },
+    -- autotag = {
+    --   enable = true,
+    -- },
   },
 }

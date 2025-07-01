@@ -7,4 +7,3 @@ WALLPAPER=$(find "$WALLPAPER_DIR" -path "$WALLPAPER_DIR/.git" -prune -o -type f 
 
 # Smooth fade transition
 swww img "$WALLPAPER" --transition-type fade --transition-duration 0.1
-

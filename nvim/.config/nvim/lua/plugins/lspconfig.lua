@@ -1,5 +1,6 @@
 return {
   "neovim/nvim-lspconfig",
+  event = { "BufReadPre", "BufNewFile" },
 
   dependencies = {
     { "mason-org/mason.nvim", opts = {} },
@@ -7,6 +8,7 @@ return {
     "WhoIsSethDaniel/mason-tool-installer.nvim",
     {
       "j-hui/fidget.nvim",
+      event = "LspAttach",
       opts = {
         notification = {
           window = {
@@ -15,7 +17,10 @@ return {
         },
       },
     },
-    "saghen/blink.cmp",
+    {
+      "saghen/blink.cmp",
+      lazy = true,
+    },
   },
 
   config = function()
@@ -27,9 +32,7 @@ return {
           vim.keymap.set(mode, keys, func, { buffer = event.buf, desc = "LSP: " .. desc })
         end
         map("K", function()
-          vim.lsp.buf.hover({
-            border = "rounded",
-          })
+          vim.lsp.buf.hover({ border = "rounded" })
         end, "doc")
         map("grn", vim.lsp.buf.rename, "rename")
         map("<leader>ca", vim.lsp.buf.code_action, "code actions", { "n", "x" })
@@ -40,6 +43,7 @@ return {
         map("gO", require("telescope.builtin").lsp_document_symbols, "document symbols")
         map("gW", require("telescope.builtin").lsp_dynamic_workspace_symbols, "workspace symbols")
         map("grt", require("telescope.builtin").lsp_type_definitions, "type definition")
+
         local function client_supports_method(client, method, bufnr)
           if vim.fn.has("nvim-0.11") == 1 then
             return client:supports_method(method, bufnr)
@@ -47,7 +51,9 @@ return {
             return client.supports_method(method, { bufnr = bufnr })
           end
         end
+
         local client = vim.lsp.get_client_by_id(event.data.client_id)
+
         if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_documentHighlight, event.buf) then
           local highlight_augroup = vim.api.nvim_create_augroup("kickstart-lsp-highlight", { clear = false })
           vim.api.nvim_create_autocmd({ "CursorHold", "CursorHoldI" }, {
@@ -68,6 +74,7 @@ return {
             end,
           })
         end
+
         if client and client_supports_method(client, vim.lsp.protocol.Methods.textDocument_inlayHint, event.buf) then
           map("<leader>th", function()
             vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled({ bufnr = event.buf }))
@@ -76,6 +83,7 @@ return {
       end,
     })
 
+    -- Diagnostic display settings
     vim.diagnostic.config({
       severity_sort = true,
       float = { border = "rounded", source = "if_many" },
@@ -93,19 +101,15 @@ return {
         source = "if_many",
         spacing = 2,
         format = function(diagnostic)
-          local diagnostic_message = {
-            [vim.diagnostic.severity.ERROR] = diagnostic.message,
-            [vim.diagnostic.severity.WARN] = diagnostic.message,
-            [vim.diagnostic.severity.INFO] = diagnostic.message,
-            [vim.diagnostic.severity.HINT] = diagnostic.message,
-          }
-          return diagnostic_message[diagnostic.severity]
+          return diagnostic.message
         end,
       },
     })
 
+    -- Capabilities
     local capabilities = require("blink.cmp").get_lsp_capabilities()
 
+    -- LSP servers
     local servers = {
       basedpyright = {},
       gopls = {},
@@ -129,10 +133,7 @@ return {
 
     require("mason-tool-installer").setup({ ensure_installed = ensure_installed })
 
-    ---@diagnostic disable-next-line: missing-fields
     require("mason-lspconfig").setup({
-      ensure_installed = {},
-      automatic_installation = false,
       handlers = {
         function(server_name)
           local server = servers[server_name] or {}

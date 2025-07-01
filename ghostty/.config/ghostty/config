@@ -3,9 +3,8 @@ font-family = "JetBrains Mono Nerd Font"
 font-size = 18
 
 # Appearance
-theme = "catppuccin-mocha"
-background = "#00000D"
-# background-opacity = 0.98
+theme = "rose-pine"
+background-opacity = 0.95
 
 # Binding
 keybind = unconsumed:alt+1=unbind

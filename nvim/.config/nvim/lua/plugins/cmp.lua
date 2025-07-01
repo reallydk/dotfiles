@@ -5,10 +5,8 @@ return {
   dependencies = {
     "folke/lazydev.nvim",
   },
-
   config = function()
     vim.o.completeopt = "menu,menuone,noinsert,noselect,preview"
-
     require("blink.cmp").setup({
 
       keymap = {
@@ -98,6 +96,11 @@ return {
       snippets = { preset = "luasnip" },
 
       fuzzy = { implementation = "lua" },
+
+      signature = {
+        enabled = true,
+        window = { border = "rounded" },
+      },
     })
   end,
 }

@@ -1,34 +1,39 @@
 -- Line numbers
-vim.o.number = true
-vim.o.relativenumber = true
+vim.opt.number = true
+vim.opt.relativenumber = true
 
 -- UI behavior
-vim.o.mouse = "a"
-vim.o.scrolloff = 10
-vim.o.signcolumn = "no"
-vim.o.cursorline = true
-vim.o.termguicolors = true
-vim.o.wrap = false
-vim.o.breakindent = true
+vim.opt.mouse = "a"
+vim.opt.scrolloff = 10
+vim.opt.signcolumn = "no"
+vim.opt.cursorline = true
+vim.opt.termguicolors = true
+vim.opt.wrap = false
+vim.opt.breakindent = true
 
 vim.opt.fillchars:append({ eob = " " })
 
 -- Tabs & indentation
-vim.o.expandtab = true
-vim.o.shiftwidth = 2
-vim.o.tabstop = 2
-vim.o.softtabstop = 2
-vim.o.smartindent = true
-vim.o.autoindent = true
+vim.opt.expandtab = true
+vim.opt.shiftwidth = 2
+vim.opt.tabstop = 2
+vim.opt.softtabstop = 2
+vim.opt.smartindent = true
+vim.opt.autoindent = true
 
 -- Search
-vim.o.ignorecase = true
-vim.o.smartcase = true
-vim.o.incsearch = true
+vim.opt.ignorecase = true
+vim.opt.smartcase = true
+vim.opt.incsearch = true
 
 -- File behavior
-vim.o.confirm = true
-vim.o.undofile = true
-vim.o.swapfile = false
+vim.opt.confirm = true
+vim.opt.undofile = true
+vim.opt.swapfile = false
+vim.opt.backup = false
 vim.opt.backspace = { "indent", "eol", "start" }
-vim.o.cmdheight = 0
+vim.opt.cmdheight = 0
+
+-- time
+vim.opt.updatetime = 250
+vim.opt.timeoutlen = 300

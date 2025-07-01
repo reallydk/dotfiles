@@ -7,6 +7,7 @@ return {
     require("github-theme").setup({
       options = {
         transparent = true,
+        terminal_colors = false,
       },
     })
     vim.cmd("colorscheme github_dark_default")
